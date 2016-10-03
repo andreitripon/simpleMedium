@@ -1,0 +1,12 @@
+{
+  "config": {
+    "vendor-dir": "../../vendor"
+  },
+  "autoload": {
+    "psr-4": {
+      "simpleMediumCore\\": "../../inc/"
+    }
+  },
+  "require": {
+  }
+}
