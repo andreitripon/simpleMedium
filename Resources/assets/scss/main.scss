@@ -1,0 +1,16 @@
+//Global elements
+@import "globalElements/fonts";
+@import "globalElements/colors";
+//@import "globalElements/typography";
+//@import "globalElements/forms";
+//@import "globalElements/buttons";
+
+//Sections
+@import "sections/header";
+@import "sections/footer";
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1000px;
+  }
+}

@@ -1,0 +1,100 @@
+.main-header{
+  .header-navbar{
+    border-bottom: 1px solid get-color('grey', .5);
+  }
+
+  .navbar-collapse{
+    max-width: 832px;
+    margin: 0 auto;
+    border-top: 1px solid get-color('grey', .5);
+    padding: 0;
+    position: relative;
+  }
+
+  .navbar-header{
+    float: none;
+  }
+
+  .navbar-nav{
+    margin: 0 -15px;
+
+    &>li>a{
+      font-family: 'Roboto', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      color: get-color('grey', .8);
+
+      &:hover{
+        color: get-color('grey');
+        background: none;
+      }
+    }
+  }
+
+  .navbar-form{
+    display: block;
+    margin: 0;
+    padding: 0;
+
+    .search-field,
+    .form-group{
+      width: 100%;
+    }
+
+    .search-field{
+      position: absolute;
+      right: 0;
+      top: 0;
+      line-height: 50px;
+      padding: 0 50px 0 10px;
+      height: inherit;
+      border-radius: 0;
+      box-shadow: none;
+      border: 0;
+      width: 150px;
+      transition: width .5s;
+
+      &:focus{
+        width: 100%;
+      }
+    }
+    
+    .btn-search{
+      background: none;
+      font-size: 18px;
+      color: get-color('grey', .5);
+      position: absolute;
+      right: 0;
+      height: 50px;
+      width: 50px;
+      top: 0;
+    }
+  }
+
+  .navbar>.container .navbar-brand{
+    height: inherit;
+    text-align: center;
+    float: none;
+    display: table;
+    margin: 33px auto;
+    color: get-color('grey');
+
+    &>img{
+      margin: auto;
+    }
+
+    h1{
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+      font-size: 30px;
+      margin-top: 12px;
+      margin-bottom: 13px;
+    }
+
+    span{
+      font-family: 'Roboto', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+    }
+  }
+}

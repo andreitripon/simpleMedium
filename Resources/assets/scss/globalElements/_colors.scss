@@ -1,0 +1,39 @@
+$colors:  grey      #373a36,
+green     #83bc00,
+purple    #9f5eb4,
+red       #d04124,
+orange    #ec8a00,
+blue      #36c0d7,
+yellow    #e0ce28;
+
+@function get-color($color-name, $opacity: 1) {
+  $return: inherit;
+
+  @each $color in $colors {
+    @if ""+nth($color, 1) ==  $color-name {
+
+      $red:   red(nth($color, 2));
+      $green: green(nth($color, 2));
+      $blue:  blue(nth($color, 2));
+
+      $return: rgba($red, $green, $blue, $opacity);
+    }
+  }
+
+  @return $return;
+}
+
+//Example:
+// .test{
+//    color: get-color('red', 0.5);
+// }
+
+@each $color in $colors {
+  .background-#{""+nth($color, 1)} {
+    background-color: nth($color, 2);
+  }
+
+  .color-#{""+nth($color, 1)} {
+    color: nth($color, 2);
+  }
+}

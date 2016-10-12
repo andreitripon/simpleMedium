@@ -44,6 +44,7 @@ class Bootstrap{
      * @since 1.0
      */
     public function addScripts(){
+        wp_enqueue_style('googel-fonts', 'https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
         wp_enqueue_style('style', get_stylesheet_uri());
         wp_enqueue_script('scripts', get_template_directory_uri() . '/Resources/public/js/scripts.min.js', array(), '1.0.0', true);
     }

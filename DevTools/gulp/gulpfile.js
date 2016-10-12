@@ -12,33 +12,33 @@ var gulp        = require('gulp'),
     });
 
 var options = {
-    scripts: {
-        assets: {
+    assets: {
+        dir: '../../Resources/assets/',
+        scripts: {
             dir: '../../Resources/assets/js/',
             files: [
                 '../../Resources/assets/js/libs.min.js',
                 '../../Resources/assets/js/main.js'
             ]
         },
-        public: {
-            dir: '../../Resources/public/js/',
-            files: ['../../Resources/public/js/*.js']
-        }
-    },
-    css: {
-        assets: {
+        css: {
             dir: '../../Resources/assets/css/',
             files: ['../../Resources/assets/css/*.css']
         },
-        public: {
-            dir: '../../Resources/public/css/',
-            files: ['../../Resources/public/css/*.css']
-        }
-    },
-    scss: {
-        assets: {
+        scss: {
             dir: '../../Resources/assets/scss/',
             files: ['../../Resources/assets/scss/*.scss']
+        }
+    },
+    public: {
+        dir: '../../Resources/public/',
+        scripts: {
+            dir: '../../Resources/public/js/',
+            files: ['../../Resources/public/js/*.js']
+        },
+        css: {
+            dir: '../../Resources/public/css/',
+            files: ['../../Resources/public/css/*.css']
         }
     },
     bower:{
@@ -60,7 +60,7 @@ gulp.task('librarysScripts', ['bower'], function () {
         }))
         .pipe(concatJS('libs.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest(options.scripts.assets.dir));
+        .pipe(gulp.dest(options.assets.scripts.dir));
 });
 
 gulp.task('librarysStyles', ['bower'], function () {
@@ -70,29 +70,29 @@ gulp.task('librarysStyles', ['bower'], function () {
         }))
         .pipe(concatCSS('libs.min.css'))
         .pipe(cleanCSS())
-        .pipe(gulp.dest(options.css.assets.dir));
+        .pipe(gulp.dest(options.assets.css.dir));
 });
 
 gulp.task('librarys', ['librarysScripts', 'librarysStyles']);
 
 gulp.task('scripts', function() {
-    return gulp.src(options.scripts.assets.files)
+    return gulp.src(options.assets.scripts.files)
         .pipe(concatJS('scripts.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest(options.scripts.public.dir));
+        .pipe(gulp.dest(options.public.scripts.dir));
 });
 
 gulp.task('sass', function() {
-    return sass(options.scss.assets.files)
+    return sass(options.assets.scss.files)
         .on('error', sass.logError)
-        .pipe(gulp.dest(options.css.assets.dir))
+        .pipe(gulp.dest(options.assets.css.dir))
 });
 
 gulp.task('css', ['sass'], function() {
-    return gulp.src(options.css.assets.files)
+    return gulp.src(options.assets.css.files)
         .pipe(concatCSS('style.css'))
         .pipe(cleanCSS())
-        .pipe(gulp.dest(options.css.public.dir))
+        .pipe(gulp.dest(options.public.css.dir))
         .pipe(gulp.dest('../../'))
 });
 

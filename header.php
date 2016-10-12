@@ -25,5 +25,50 @@
 <body <?php body_class(); ?>>
 
 <header class="main-header">
+    <nav class="navbar">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<?php echo home_url(); ?>" title="<?php bloginfo( 'name' ); ?>">
+                        <?php
+                        $logo = get_theme_mod( 'sm_header_logo' );
+                        if(!empty($logo)): ?>
+                            <img src="<?php echo esc_url( $logo ); ?>" alt="<?php bloginfo( 'name' ); ?>">
+                        <?php endif; ?>
+                        <h1><?php bloginfo( 'name' ); ?></h1>
+                        <span><?php bloginfo( 'description' ); ?></span>
+                    </a>
+                </div>
+            </div>
+            <div class="row header-navbar">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <?php
+                    if( has_nav_menu( 'header_main' ) ) {
+                        wp_nav_menu(
+                            array(
+                                'theme_location' => 'header_main',
+                                'container'      => false,
+                                'menu_class'     => 'nav navbar-nav',
+                            )
+                        );
+                    }
+                    ?>
 
+                    <form role="search" method="get" class="navbar-form navbar-right" action="<?php echo home_url( '/' ); ?>">
+                        <input type="search" class="search-field form-control"
+                               placeholder="<?php echo esc_attr_x( 'Search', 'placeholder' ) ?>"
+                               value="<?php echo get_search_query() ?>" name="s"
+                               title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" />
+                        <button type="submit" class="btn btn-search glyphicon glyphicon-search"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
 </header>
